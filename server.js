@@ -4,6 +4,8 @@
 const express =require("express");
 const  fs = require("fs");
 let app=express();
+const port = process.env.PORT|| 3000;
+
 
 app.use(express.static(__dirname+"/public"));
 app.use((req,res,next)=>{
@@ -19,11 +21,6 @@ app.use((req,res,next)=>{
 
 });
 
-
-
-
-
-
 app.get("/",(req,res)=>{
     res.send({
         name:'omar',
@@ -35,11 +32,9 @@ app.get("/",(req,res)=>{
         }
     });
 });
-
 app.get("/about",(req,res)=>{
     res.send("about page");
 });
-
 app.get("/bad",(req,res)=>{
     res.send({
         errorMessage:"unable to show web page_"
@@ -47,8 +42,6 @@ app.get("/bad",(req,res)=>{
 });
 
 
-
-
-app.listen(3000,()=>{
-    console.log("server running on port 3000");
+app.listen(port,()=>{
+    console.log(`server running on port ${port}`);
 });
